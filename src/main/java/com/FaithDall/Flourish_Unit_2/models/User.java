@@ -1,13 +1,12 @@
 package com.FaithDall.Flourish_Unit_2.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.time.Instant;
+import java.util.List;
 
 @Entity
+@Table(name = "users")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,7 +16,13 @@ public class User {
     private String petType;
     private Instant createdAt;
 
+    //since there are many plants to one user, it's better to represent plants in a list
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user", orphanRemoval = true)
+    private List<Plant> plants;
+
+    //sets the timestamp automatically when a user object is created, so it doesn't need to be set manually each time
     public User() {
+        this.createdAt = Instant.now();
     }
 
     public User(String username, String password, String petType) {
@@ -42,9 +47,7 @@ public class User {
         return petType;
     }
 
-    public Instant getCreatedAt() {
-        return createdAt;
-    }
+    public Instant getCreatedAt() { return createdAt; }
 
     public void setUsername(String username) {
         this.username = username;
