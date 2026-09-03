@@ -17,6 +17,9 @@ public class Plant {
     @ManyToOne(fetch = FetchType.LAZY)
     private User user;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Species species;
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "plant", orphanRemoval = true)
     private List<WateringLog> wateringLogs;
 
@@ -47,5 +50,9 @@ public class Plant {
 
     public void setNickname(String nickname) {
         this.nickname = nickname;
+    }
+
+    public void setSpecies(Species species) {
+        this.species = species;
     }
 }
