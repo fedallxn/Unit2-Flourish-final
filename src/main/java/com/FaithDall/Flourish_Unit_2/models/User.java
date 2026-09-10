@@ -31,7 +31,7 @@ public class User {
         this.petType = petType;
     }
 
-    public int getUserIdd() {
+    public int getUserId() {
         return userId;
     }
 

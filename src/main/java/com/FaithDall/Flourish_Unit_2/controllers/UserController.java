@@ -25,6 +25,6 @@ public class UserController {
     }
     @DeleteMapping("{userId}")
     public void deleteUser(@PathVariable int userId) {
-        userRepository.findById(userId);
+        userRepository.deleteById(userId);
     }
 }

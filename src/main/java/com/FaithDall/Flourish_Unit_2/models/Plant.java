@@ -48,6 +48,9 @@ public class Plant {
         return user;
     }
 
+    //realized I needed a setter for the user because I need to be able to assign a user to the plant when its added
+    public void setUser(User user) { this.user = user; }
+
     public void setNickname(String nickname) {
         this.nickname = nickname;
     }
