@@ -32,4 +32,6 @@ public class WateringLog {
     public Plant getPlant() {
         return plant;
     }
+
+    public void setPlant (Plant plant) { this.plant = plant; }
 }
