@@ -21,7 +21,8 @@ public class User {
     private List<Plant> plants;
 
     //sets the timestamp automatically when a user object is created, so it doesn't need to be set manually each time
-    public User() {
+    @PrePersist
+    public void User() {
         this.createdAt = Instant.now();
     }
 

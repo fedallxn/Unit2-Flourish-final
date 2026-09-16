@@ -24,7 +24,8 @@ public class Plant {
     private List<WateringLog> wateringLogs;
 
     //sets the timestamp automatically when a user object is created, so it doesn't need to be set manually each time
-    public Plant() {
+    @PrePersist
+    public void Plant() {
         this.createdAt = Instant.now();
     }
 
