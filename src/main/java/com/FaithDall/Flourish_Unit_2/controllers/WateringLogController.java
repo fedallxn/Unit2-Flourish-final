@@ -5,6 +5,7 @@ import com.FaithDall.Flourish_Unit_2.models.WateringLog;
 import com.FaithDall.Flourish_Unit_2.repositories.PlantRepository;
 import com.FaithDall.Flourish_Unit_2.repositories.WateringLogRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -25,11 +26,15 @@ public class WateringLogController {
 
     @PostMapping
     //doesn't need a RequestBody since the wateredAt field in my model is handled automatically
-    public WateringLog addLog(@PathVariable int plantId){
+    public ResponseEntity<Object> addLog(@PathVariable int plantId){
         WateringLog log = new WateringLog();
         Plant currentPlant = plantRepository.findById(plantId).orElse(null);
-        log.setPlant(currentPlant);
-        return wateringLogRepository.save(log);
+        if (currentPlant == null) {
+            return ResponseEntity.status(404).body("Plant not found.");
+        } else {
+            log.setPlant(currentPlant);
+            return ResponseEntity.ok(wateringLogRepository.save(log));
+        }
     }
 
 }

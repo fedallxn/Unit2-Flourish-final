@@ -3,6 +3,7 @@ package com.FaithDall.Flourish_Unit_2.controllers;
 import com.FaithDall.Flourish_Unit_2.models.Species;
 import com.FaithDall.Flourish_Unit_2.repositories.SpeciesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -22,12 +23,16 @@ public class SpeciesController {
     }
 
     @PutMapping("{speciesId}")
-    public Species updateSpeciesInfo(@PathVariable int speciesId, @RequestBody Species updatedSpecies) {
+    public ResponseEntity<Object> updateSpeciesInfo(@PathVariable int speciesId, @RequestBody Species updatedSpecies) {
         Species currentSpecies = speciesRepository.findById(speciesId).orElse(null);
-        currentSpecies.setWateringFrequency(updatedSpecies.getWateringFrequency());
-        currentSpecies.setLightRequirement(updatedSpecies.getLightRequirement());
-        currentSpecies.setCareInfo(updatedSpecies.getCareInfo());
-        currentSpecies.setPlantImageURL(updatedSpecies.getPlantImageURL());
-        return speciesRepository.save(currentSpecies);
+        if (currentSpecies == null) {
+            return ResponseEntity.status(404).body("Species not found.");
+        } else {
+            currentSpecies.setWateringFrequency(updatedSpecies.getWateringFrequency());
+            currentSpecies.setLightRequirement(updatedSpecies.getLightRequirement());
+            currentSpecies.setCareInfo(updatedSpecies.getCareInfo());
+            currentSpecies.setPlantImageURL(updatedSpecies.getPlantImageURL());
+            return ResponseEntity.ok(speciesRepository.save(currentSpecies));
+        }
     }
 }

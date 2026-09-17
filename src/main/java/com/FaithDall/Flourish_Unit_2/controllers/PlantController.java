@@ -5,6 +5,7 @@ import com.FaithDall.Flourish_Unit_2.models.User;
 import com.FaithDall.Flourish_Unit_2.repositories.PlantRepository;
 import com.FaithDall.Flourish_Unit_2.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,30 +25,53 @@ public class PlantController {
     }
 
     @PostMapping
-    public Plant addPlant(@PathVariable int userId, @RequestBody Plant plant) {
+    public ResponseEntity<Object> addPlant(@PathVariable int userId, @RequestBody Plant plant) {
         User plantOwner = userRepository.findById(userId).orElse(null);
-        plant.setUser(plantOwner);
-        return plantRepository.save(plant);
+        if (plantOwner == null) {
+            return ResponseEntity.status(404).body("No owner found.");
+        } else {
+            plant.setUser(plantOwner);
+            return ResponseEntity.ok(plantRepository.save(plant));
+        }
     }
 
     @PutMapping("{plantId}")
-    public Plant updatePlant(@PathVariable int userId, @PathVariable int plantId, @RequestBody Plant plant) {
+    public ResponseEntity<Object> updatePlant(@PathVariable int userId, @PathVariable int plantId, @RequestBody Plant plant) {
         Plant currentPlant = plantRepository.findById(plantId).orElse(null);
-        User currentUser = userRepository.findById(userId).orElse(null);
-        if (currentPlant.getUser().equals(currentUser)) {
-            currentPlant.setNickname(plant.getNickname());
-            return plantRepository.save(currentPlant);
+        if (currentPlant == null) {
+            return ResponseEntity.status(404).body("Plant not found.");
         } else {
-            return null;
+            User currentUser = userRepository.findById(userId).orElse(null);
+            if (currentUser == null) {
+                return ResponseEntity.status(404).body("User not found.");
+            } else {
+                if (!currentPlant.getUser().equals(currentUser)) {
+                    return ResponseEntity.status(403).body("Not authorized!");
+                } else {
+                    currentPlant.setNickname(plant.getNickname());
+                    return ResponseEntity.ok(plantRepository.save(currentPlant));
+                }
+            }
         }
     }
 
     @DeleteMapping("{plantId}")
-    public void deletePlant(@PathVariable int userId, @PathVariable int plantId) {
+    public ResponseEntity<Object> deletePlant(@PathVariable int userId, @PathVariable int plantId) {
         Plant currentPlant = plantRepository.findById(plantId).orElse(null);
-        User currentUser = userRepository.findById(userId).orElse(null);
-        if (currentPlant.getUser().equals(currentUser)) {
-            plantRepository.deleteById(plantId);
+        if (currentPlant == null) {
+            return ResponseEntity.status(404).body("Plant not found.");
+        } else {
+            User currentUser = userRepository.findById(userId).orElse(null);
+            if (currentUser == null) {
+                return ResponseEntity.status(404).body("User not found.");
+            } else {
+                if (!currentPlant.getUser().equals(currentUser)) {
+                    return ResponseEntity.status(403).body("Not authorized!");
+                } else {
+                    plantRepository.deleteById(plantId);
+                    return ResponseEntity.ok("Plant successfully deleted!");
+                }
+            }
         }
     }
 }

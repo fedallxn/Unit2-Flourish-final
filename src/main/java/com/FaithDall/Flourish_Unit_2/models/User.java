@@ -13,6 +13,7 @@ public class User {
     private int userId;
     private String username;
     private String password;
+    private String name;
     private String petType;
     private Instant createdAt;
 
@@ -26,9 +27,10 @@ public class User {
         this.createdAt = Instant.now();
     }
 
-    public User(String username, String password, String petType) {
+    public User(String username, String password, String name, String petType) {
         this.username = username;
         this.password = password;
+        this.name = name;
         this.petType = petType;
     }
 
@@ -44,6 +46,8 @@ public class User {
         return password;
     }
 
+    public String getName() { return name; }
+
     public String getPetType() {
         return petType;
     }
@@ -57,6 +61,8 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public void setName(String name) { this.name = name; }
 
     public void setPetType(String petType) {
         this.petType = petType;
