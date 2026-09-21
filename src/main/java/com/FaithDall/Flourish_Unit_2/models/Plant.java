@@ -13,6 +13,8 @@ public class Plant {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int plantId;
     private String nickname;
+    //needed a reference point for react
+    private String speciesName;
     private Instant createdAt;
 
     //we don't need the users information, just the species information
@@ -20,7 +22,8 @@ public class Plant {
     @ManyToOne(fetch = FetchType.LAZY)
     private User user;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    //I'm changing this back to Lazy because when I was using Eager it was causing triplicates (bc I have 3 users)
+    @ManyToOne(fetch = FetchType.LAZY)
     private Species species;
 
     @JsonIgnore
@@ -49,6 +52,8 @@ public class Plant {
         return nickname;
     }
 
+    public String getSpeciesName() { return speciesName; }
+
     public Instant getCreatedAt() {
         return createdAt;
     }
@@ -65,6 +70,8 @@ public class Plant {
     public void setNickname(String nickname) {
         this.nickname = nickname;
     }
+
+    public void setSpeciesName(String speciesName) { this.speciesName = speciesName; }
 
     public void setSpecies(Species species) {
         this.species = species;
