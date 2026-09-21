@@ -1,5 +1,6 @@
 package com.FaithDall.Flourish_Unit_2.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.time.Instant;
@@ -12,6 +13,8 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int userId;
     private String username;
+    //we don't want the users password showing!!
+    @JsonIgnore
     private String password;
     private String name;
     private String petType;
@@ -23,8 +26,12 @@ public class User {
 
     //sets the timestamp automatically when a user object is created, so it doesn't need to be set manually each time
     @PrePersist
-    public void User() {
+    public void onCreate() {
         this.createdAt = Instant.now();
+    }
+
+    //still need an empty one
+    public User() {
     }
 
     public User(String username, String password, String name, String petType) {

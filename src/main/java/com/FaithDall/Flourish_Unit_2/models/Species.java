@@ -1,5 +1,6 @@
 package com.FaithDall.Flourish_Unit_2.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -18,6 +19,8 @@ public class Species {
     private String careInfo;
     private String plantImageURL;
 
+    //whenever I was testing, I'd get an infinite loop, so I had to add an JsonIgnore
+    @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "species", orphanRemoval = true)
     private List<Plant> plants;
 

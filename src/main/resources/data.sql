@@ -1,11 +1,11 @@
 -- Users
-INSERT IGNORE INTO users (username, password, name, pet_type, email) VALUES
-('themysteriousmara', 'MyMickey33', 'Mara', 'cat', 'maramay505@yahoo.com'),
-('ldylandon', 'BotanyGRL626', 'Landon', NULL, 'crazyplantlady@hotmail.com'),
-('fedallxn', 'tru$t&pixidust24!', 'Faith', 'cat', 'faithe.dall@gmail.com');
+INSERT IGNORE INTO users (username, password, name, pet_type, created_at) VALUES
+('themysteriousmara', 'MyMickey33', 'Mara', 'cat', NOW()),
+('ldylandon', 'BotanyGRL626', 'Landon', NULL, NOW()),
+('fedallxn', 'tru$t&pixidust24!', 'Faith', 'cat', NOW());
 
 -- Species
-INSERT IGNORE INTO species (common_name, scientific_name, watering_frequency, light_requirement, is_toxic, care_info, plant_image_url) VALUES
+INSERT IGNORE INTO species (common_name, scientific_name, watering_frequency, light_requirement, is_toxic, care_info, plant_imageurl) VALUES
 ('Pothos', 'Epipremnum aureum', 7, 'Low to Medium', true, 'Water when the top inch of soil is dry. Tolerates low light but thrives in indirect light. Wipe leaves occasionally to remove dust.', 'https://example.com/pothos.jpg'),
 ('Monstera', 'Monstera deliciosa', 10, 'Medium to Bright Indirect', true, 'Water when the top 2 inches of soil are dry. Loves humidity and bright indirect light. Wipe leaves to keep them glossy.', 'https://example.com/monstera.jpg'),
 ('Spider Plant', 'Chlorophytum comosum', 7, 'Bright Indirect', false, 'Water when the top inch of soil feels dry. Thrives in bright indirect light. Great air purifier and very forgiving!', 'https://example.com/spider-plant.jpg'),
@@ -20,14 +20,14 @@ INSERT IGNORE INTO species (common_name, scientific_name, watering_frequency, li
 ('Jade Plant', 'Crassula ovata', 14, 'Bright Direct', true, 'Allow soil to dry completely between waterings. Needs bright light with some direct sun. Very drought tolerant — less is more!', 'https://example.com/jade-plant.jpg');
 
 -- Mara's Plants
-INSERT IGNORE INTO plants (nickname, user_id, species_id, created_at) VALUES
+INSERT IGNORE INTO plants (nickname, user_user_id, species_species_id, created_at) VALUES
 ('Arachnia', 2, 3, NOW()),
 ('Princess P.', 2, 7, NOW()),
 ('Holly', 2, 8, NOW()),
 ('Eunice', 2, 1, NOW());
 
 -- Faith's Plants
-INSERT IGNORE INTO plants (nickname, user_id, species_id, created_at) VALUES
+INSERT IGNORE INTO plants (nickname, user_user_id, species_species_id, created_at) VALUES
 ('Majesty', 3, 2, NOW()),
 ('Ares', 3, 4, NOW()),
 ('Aphrodite', 3, 7, NOW()),
@@ -36,7 +36,7 @@ INSERT IGNORE INTO plants (nickname, user_id, species_id, created_at) VALUES
 ('Plutus', 3, 11, NOW());
 
 -- Landon's Plants
-INSERT IGNORE INTO plants (nickname, user_id, species_id, created_at) VALUES
+INSERT IGNORE INTO plants (nickname, user_user_id, species_species_id, created_at) VALUES
 ('Figitus', 1, 5, NOW()),
 ('Lillian', 1, 6, NOW()),
 ('Alicia', 1, 9, NOW()),
