@@ -3,11 +3,9 @@ package com.FaithDall.Flourish_Unit_2.controllers;
 import com.FaithDall.Flourish_Unit_2.models.ContactMessage;
 import com.FaithDall.Flourish_Unit_2.repositories.ContactMessageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin(origins = "http://localhost:5173")
 @RestController
 @RequestMapping("contactUs")
 public class ContactMessageController {
