@@ -1,8 +1,10 @@
 package com.FaithDall.Flourish_Unit_2.controllers;
 
 import com.FaithDall.Flourish_Unit_2.models.Plant;
+import com.FaithDall.Flourish_Unit_2.models.Species;
 import com.FaithDall.Flourish_Unit_2.models.User;
 import com.FaithDall.Flourish_Unit_2.repositories.PlantRepository;
+import com.FaithDall.Flourish_Unit_2.repositories.SpeciesRepository;
 import com.FaithDall.Flourish_Unit_2.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +21,9 @@ public class PlantController {
     //had to inject another repository since I need to query the database for the user as well
     @Autowired
     private UserRepository userRepository;
+    //reinjecting the species controller again, because I need the to pull species information when the user adds a plant
+    @Autowired
+    private SpeciesRepository speciesRepository;
 
     @GetMapping
     public List<Plant> getUsersPlants(@PathVariable int userId) {
@@ -30,10 +35,15 @@ public class PlantController {
         User plantOwner = userRepository.findById(userId).orElse(null);
         if (plantOwner == null) {
             return ResponseEntity.status(404).body("No owner found.");
-        } else {
-            plant.setUser(plantOwner);
-            return ResponseEntity.ok(plantRepository.save(plant));
         }
+        Species addedSpecies = speciesRepository.findByCommonName(plant.getSpeciesName());
+        if (addedSpecies == null) {
+            return ResponseEntity.status(404).body("No Species found.");
+        }
+        plant.setUser(plantOwner);
+        plant.setSpecies(addedSpecies);
+        plant.setPlantImageURL("http://localhost:8080/placeholder.jpg");
+        return ResponseEntity.ok(plantRepository.save(plant));
     }
 
     @PutMapping("{plantId}")
