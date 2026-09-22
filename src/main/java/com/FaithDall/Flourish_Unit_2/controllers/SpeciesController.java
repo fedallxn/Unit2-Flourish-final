@@ -32,7 +32,6 @@ public class SpeciesController {
             currentSpecies.setWateringFrequency(updatedSpecies.getWateringFrequency());
             currentSpecies.setLightRequirement(updatedSpecies.getLightRequirement());
             currentSpecies.setCareInfo(updatedSpecies.getCareInfo());
-            currentSpecies.setPlantImageURL(updatedSpecies.getPlantImageURL());
             return ResponseEntity.ok(speciesRepository.save(currentSpecies));
         }
     }

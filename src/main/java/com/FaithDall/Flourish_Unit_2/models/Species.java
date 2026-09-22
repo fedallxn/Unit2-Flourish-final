@@ -17,7 +17,6 @@ public class Species {
     private String lightRequirement;
     private boolean isToxic;
     private String careInfo;
-    private String plantImageURL;
 
     //whenever I was testing, I'd get an infinite loop, so I had to add an JsonIgnore
     @JsonIgnore
@@ -34,8 +33,7 @@ public class Species {
             int wateringFrequency,
             String lightRequirement,
             boolean isToxic,
-            String careInfo,
-            String plantImageURL
+            String careInfo
     ) {
         this.commonName = commonName;
         this.scientificName = scientificName;
@@ -43,7 +41,6 @@ public class Species {
         this.lightRequirement = lightRequirement;
         this.isToxic = isToxic;
         this.careInfo = careInfo;
-        this.plantImageURL = plantImageURL;
     }
 
     public int getSpeciesId() {
@@ -74,10 +71,6 @@ public class Species {
         return careInfo;
     }
 
-    public String getPlantImageURL() {
-        return plantImageURL;
-    }
-
     public List<Plant> getPlants() {
         return plants;
     }
@@ -92,9 +85,5 @@ public class Species {
 
     public void setCareInfo(String careInfo) {
         this.careInfo = careInfo;
-    }
-
-    public void setPlantImageURL(String plantImageURL) {
-        this.plantImageURL = plantImageURL;
     }
 }

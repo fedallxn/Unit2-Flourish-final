@@ -13,6 +13,9 @@ public class Plant {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int plantId;
     private String nickname;
+    //needs to mimic what the front end looks like which includes the plant image before species data is loaded
+    @Column(name = "plant_image_url")
+    private String plantImageURL;
     //needed a reference point for react
     private String speciesName;
     private Instant createdAt;
@@ -52,6 +55,8 @@ public class Plant {
         return nickname;
     }
 
+    public String getPlantImageURL() { return plantImageURL; }
+
     public String getSpeciesName() { return speciesName; }
 
     public Instant getCreatedAt() {
@@ -70,6 +75,8 @@ public class Plant {
     public void setNickname(String nickname) {
         this.nickname = nickname;
     }
+
+    public void setPlantImageURL(String plantImageURL) { this.plantImageURL = plantImageURL; }
 
     public void setSpeciesName(String speciesName) { this.speciesName = speciesName; }
 
