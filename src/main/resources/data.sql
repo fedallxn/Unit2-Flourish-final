@@ -5,19 +5,19 @@ INSERT IGNORE INTO users (username, password, name, pet_type, created_at) VALUES
 ('fedallxn', 'tru$t&pixidust24!', 'Faith', 'cat', NOW());
 
 -- Species
-INSERT IGNORE INTO species (common_name, scientific_name, watering_frequency, light_requirement, is_toxic, care_info) VALUES
-('Pothos', 'Epipremnum aureum', 7, 'Low to Medium', true, 'Water when the top inch of soil is dry. Tolerates low light but thrives in indirect light. Wipe leaves occasionally to remove dust.'),
-('Monstera', 'Monstera deliciosa', 10, 'Medium to Bright Indirect', true, 'Water when the top 2 inches of soil are dry. Loves humidity and bright indirect light. Wipe leaves to keep them glossy.'),
-('Spider Plant', 'Chlorophytum comosum', 7, 'Bright Indirect', false, 'Water when the top inch of soil feels dry. Thrives in bright indirect light. Great air purifier and very forgiving!'),
-('Snake Plant', 'Sansevieria trifasciata', 14, 'Low to Bright Indirect', true, 'Water every 2 weeks in summer, monthly in winter. Extremely drought tolerant. One of the easiest plants to keep alive!'),
-('Fiddle Leaf Fig', 'Ficus lyrata', 10, 'Bright Indirect', true, 'Water when the top inch of soil is dry. Needs consistent bright indirect light. Avoid moving it around — it hates change!'),
-('Peace Lily', 'Spathiphyllum wallisii', 7, 'Low to Medium Indirect', true, 'Water when leaves start to droop slightly. Thrives in low light. A great indicator plant — it will tell you when it needs water!'),
-('String of Pearls', 'Senecio rowleyanus', 14, 'Bright Indirect', true, 'Water sparingly — allow soil to dry completely between waterings. Hang out of reach of pets. Loves bright indirect light.'),
-('Christmas Cactus', 'Schlumbergera bridgesii', 14, 'Bright Indirect', false, 'Water when the top inch of soil is dry, usually every 1-3 weeks. Reduce watering during blooming period. Pet safe!'),
-('Alocasia', 'Alocasia amazonica', 7, 'Medium to Bright Indirect', true, 'Keep soil consistently moist but not soggy. Loves humidity. Reduce watering in winter when plant goes dormant.'),
-('ZZ Plant', 'Zamioculcas zamiifolia', 14, 'Low to Bright Indirect', true, 'Water every 2-3 weeks in summer, monthly in winter. Extremely drought tolerant. Keep away from pets — toxic if ingested.'),
-('Caladium', 'Caladium bicolor', 4, 'Bright Indirect', true, 'Keep soil evenly moist during growing season. Loves humidity and bright indirect light. Reduce watering when dormant in winter.'),
-('Jade Plant', 'Crassula ovata', 14, 'Bright Direct', true, 'Allow soil to dry completely between waterings. Needs bright light with some direct sun. Very drought tolerant — less is more!');
+INSERT IGNORE INTO species (common_name, scientific_name, watering_frequency, light_requirement, is_toxic, care_info, plant_image_url) VALUES
+('Pothos', 'Epipremnum aureum', 7, 'Low to Medium', true, 'Water when the top inch of soil is dry. Tolerates low light but thrives in indirect light. Wipe leaves occasionally to remove dust.', 'http://localhost:8080/pothos.jpg'),
+('Monstera', 'Monstera deliciosa', 10, 'Medium to Bright Indirect', true, 'Water when the top 2 inches of soil are dry. Loves humidity and bright indirect light. Wipe leaves to keep them glossy.', 'http://localhost:8080/monstera.jpg'),
+('Spider Plant', 'Chlorophytum comosum', 7, 'Bright Indirect', false, 'Water when the top inch of soil feels dry. Thrives in bright indirect light. Great air purifier and very forgiving!', 'http://localhost:8080/spider-plant.jpg'),
+('Snake Plant', 'Sansevieria trifasciata', 14, 'Low to Bright Indirect', true, 'Water every 2 weeks in summer, monthly in winter. Extremely drought tolerant. One of the easiest plants to keep alive!', 'http://localhost:8080/snake-plant.jpg'),
+('Fiddle Leaf Fig', 'Ficus lyrata', 10, 'Bright Indirect', true, 'Water when the top inch of soil is dry. Needs consistent bright indirect light. Avoid moving it around — it hates change!', 'http://localhost:8080/fiddle-leaf-fig.jpg'),
+('Peace Lily', 'Spathiphyllum wallisii', 7, 'Low to Medium Indirect', true, 'Water when leaves start to droop slightly. Thrives in low light. A great indicator plant — it will tell you when it needs water!', 'http://localhost:8080/peace-lily.jpg'),
+('String of Pearls', 'Senecio rowleyanus', 14, 'Bright Indirect', true, 'Water sparingly — allow soil to dry completely between waterings. Hang out of reach of pets. Loves bright indirect light.', 'http://localhost:8080/string-of-pearls.jpg'),
+('Christmas Cactus', 'Schlumbergera bridgesii', 14, 'Bright Indirect', false, 'Water when the top inch of soil is dry, usually every 1-3 weeks. Reduce watering during blooming period. Pet safe!', 'http://localhost:8080/christmas-cactus.jpg'),
+('Alocasia', 'Alocasia amazonica', 7, 'Medium to Bright Indirect', true, 'Keep soil consistently moist but not soggy. Loves humidity. Reduce watering in winter when plant goes dormant.', 'http://localhost:8080/alocasia.jpg'),
+('ZZ Plant', 'Zamioculcas zamiifolia', 14, 'Low to Bright Indirect', true, 'Water every 2-3 weeks in summer, monthly in winter. Extremely drought tolerant. Keep away from pets — toxic if ingested.', 'http://localhost:8080/zz-plant.jpg'),
+('Caladium', 'Caladium bicolor', 4, 'Bright Indirect', true, 'Keep soil evenly moist during growing season. Loves humidity and bright indirect light. Reduce watering when dormant in winter.', 'http://localhost:8080/caladium.jpg'),
+('Jade Plant', 'Crassula ovata', 14, 'Bright Direct', true, 'Allow soil to dry completely between waterings. Needs bright light with some direct sun. Very drought tolerant — less is more!', 'http://localhost:8080/jade-plant.jpg');
 
 -- Mara's Plants
 INSERT IGNORE INTO plants (nickname, species_name, plant_image_url, user_user_id, species_species_id, created_at) VALUES

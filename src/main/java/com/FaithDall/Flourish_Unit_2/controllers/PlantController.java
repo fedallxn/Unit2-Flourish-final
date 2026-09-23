@@ -42,7 +42,7 @@ public class PlantController {
         }
         plant.setUser(plantOwner);
         plant.setSpecies(addedSpecies);
-        plant.setPlantImageURL("http://localhost:8080/placeholder.jpg");
+        plant.setPlantImageURL(addedSpecies.getPlantImageURL());
         return ResponseEntity.ok(plantRepository.save(plant));
     }
 
