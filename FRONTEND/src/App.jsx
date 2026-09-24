@@ -5,7 +5,6 @@ import HomePage from './components/HomePage'
 import CollectionPage from './components/CollectionPage'
 import AboutPage from './components/AboutPage'
 import ContactPage from './components/ContactPage'
-import mockPlantData from './mockPlantData'
 import { useState, useEffect } from 'react'
 import { Route, Routes } from 'react-router-dom'
 

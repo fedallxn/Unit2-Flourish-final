@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function AddPlantForm({plants, addPlant, close}) {
+function AddPlantForm({addPlant, close}) {
     const [formData, setFormData] = useState({
         nickname: '',
         speciesName: '',
@@ -8,7 +8,7 @@ function AddPlantForm({plants, addPlant, close}) {
 
     //this handleChange function is diff. from the contact form because it checks the type of input first since a checkbox is boolean
     const handleChange = (e) => {
-        const {name, value, type, checked} = e.target;
+        const {name, value} = e.target;
         setFormData((prevData) => ({
             ...prevData,
             [name]: value
